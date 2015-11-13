@@ -1,2 +1,2 @@
-# auto
-A simple test automation project
+# For learning python programming
+
