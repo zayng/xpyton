@@ -78,4 +78,13 @@ def updateRecord(db,form):
         fields['key']=key
     return fields
 db=shelve.open(shelvename)
-action=form['acton'].value if 
+action=form['acton'].value if 'action' in form else None
+if action=='Fech':
+    fields=fetchRecord(db,form)
+elif action=='Update':
+    fields=updateRecord(db, form)
+else:
+    fields=dict.fromkeys(fieldnames,'?')
+    fields['key']='Miss or invaild action'
+db.close()
+print(replyhtml%htmlize(fields))
